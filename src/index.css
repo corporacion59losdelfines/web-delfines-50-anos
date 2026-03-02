@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-cafe font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-cafe text-white font-semibold px-8 py-3 rounded-full
+           transition-all duration-300 hover:bg-cafe-light hover:scale-105
+           active:scale-95 shadow-lg hover:shadow-xl;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-cafe text-cafe font-semibold px-8 py-3 rounded-full
+           transition-all duration-300 hover:bg-cafe hover:text-white hover:scale-105
+           active:scale-95;
+  }
+
+  .section-title {
+    @apply font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-cafe;
+  }
+
+  .section-subtitle {
+    @apply font-serif text-lg md:text-xl text-caqui-dark italic;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-md hover:shadow-xl
+           transition-all duration-300 hover:-translate-y-1 overflow-hidden;
+  }
+
+  .divider-ornamental {
+    @apply flex items-center gap-4 my-6;
+  }
+}
+
+@layer utilities {
+  .text-shimmer {
+    background: linear-gradient(
+      90deg,
+      #4B3621 0%,
+      #C2B280 40%,
+      #8B7355 60%,
+      #4B3621 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .bg-texture {
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(194,178,128,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(75,54,33,0.05) 0%, transparent 50%);
+  }
+
+  .parallax-section {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f9f5f0;
+}
+::-webkit-scrollbar-thumb {
+  background: #C2B280;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4B3621;
+}
+
+/* Animaciones de entrada */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-on-scroll-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.animate-on-scroll-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate-on-scroll-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.animate-on-scroll-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Delay utility classes */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
