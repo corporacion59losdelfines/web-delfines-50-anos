@@ -2,42 +2,42 @@ import { CameraIcon, FleurDeLis } from './Icons'
 
 const galeriaItems = [
     {
-        src: '/galeria/foto1.jpg.jpg',
+        src: '/galeria/foto1.jpg',
         alt: 'Campamento nocturno – Scouts alrededor del fuego',
         label: 'Campamento',
         emoji: '🏕️',
         className: 'md:col-span-2 md:row-span-2', // Destacada
     },
     {
-        src: '/galeria/foto2.jpg.jpg',
+        src: '/galeria/foto2.jpg',
         alt: 'Servicio comunitario en el barrio Santa Cruz',
         label: 'Servicio social',
         emoji: '🌱',
         className: 'md:col-span-1 md:row-span-1',
     },
     {
-        src: '/galeria/foto3.jpg.jpg',
+        src: '/galeria/foto3.jpg',
         alt: 'Senderismo por los cerros de Antioquia',
         label: 'Aventura',
         emoji: '🥾',
         className: 'md:col-span-1 md:row-span-1',
     },
     {
-        src: '/galeria/foto4.jpg.jpg',
+        src: '/galeria/foto4.jpg',
         alt: 'Formación de líderes – Taller de habilidades',
         label: 'Liderazgo juvenil',
         emoji: '⭐',
         className: 'md:col-span-1 md:row-span-2', // Vertical
     },
     {
-        src: '/galeria/foto5.jpg.jpg',
+        src: '/galeria/foto5.jpg',
         alt: 'Ceremonia scout – Promesa y valores',
         label: 'Valores y principios',
         emoji: '⚜️',
         className: 'md:col-span-2 md:row-span-1', // Horizontal ancha
     },
     {
-        src: '/galeria/foto6.jpg.jpg',
+        src: '/galeria/foto6.jpg',
         alt: 'Comunidad – Grupo Scout 59 Los Delfines',
         label: 'Comunidad 59',
         emoji: '🤝',
