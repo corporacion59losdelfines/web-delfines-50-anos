@@ -84,11 +84,21 @@ export default function GaleriaSection() {
                                 src={item.src}
                                 alt={item.alt}
                                 loading="lazy"
+                                decoding="async"
                                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                onError={(e) => {
+                                    e.target.onerror = null;
+                                    e.target.style.display = 'none';
+                                    e.target.nextSibling.style.display = 'block';
+                                }}
                             />
+                            {/* Textura Caqui Alternativa de Fallback en caso de error */}
+                            <div className="hidden absolute inset-0 bg-caqui/20 w-full h-full border border-caqui/30 flex items-center justify-center">
+                                <p className="text-caqui font-serif uppercase tracking-widest text-xs rotate-45 opacity-50">Bodas de Oro</p>
+                            </div>
 
                             {/* Overlay oscuro en hover para destacar el texto */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-cafe/90 via-cafe/20 to-transparent opacity-60 md:opacity-0 group-hover:opacity-80 transition-opacity duration-300" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-cafe/90 via-cafe/20 to-transparent opacity-60 md:opacity-0 group-hover:opacity-80 transition-opacity duration-300 pointer-events-none" />
 
                             {/* Info de la foto */}
                             <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-0 md:translate-y-4 group-hover:translate-y-0 transition-transform duration-300">

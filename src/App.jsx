@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
 import HistoriaSection from './components/HistoriaSection'
 import ValoresSection from './components/ValoresSection'
+import TestimoniosSection from './components/TestimoniosSection'
 import BadenPowellSection from './components/BadenPowellSection'
 import InscripcionesSection from './components/InscripcionesSection'
 import GaleriaSection from './components/GaleriaSection'
@@ -63,6 +64,7 @@ export default function App() {
             <HistoriaSection />
             <BadenPowellSection />
             <ValoresSection />
+            <TestimoniosSection />
             <InscripcionesSection />
             <GaleriaSection />
             <RedesSection />
