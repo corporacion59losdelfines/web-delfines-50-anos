@@ -103,3 +103,13 @@ export const CheckIcon = ({ className = 'w-4 h-4' }) => (
         <polyline points="20 6 9 17 4 12" />
     </svg>
 )
+
+export const TentIcon = ({ className = 'w-6 h-6' }) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="M3.5 21 14 3" />
+        <path d="M20.5 21 10 3" />
+        <path d="M15.5 21 12 15l-3.5 6" />
+        <path d="M2 21h20" />
+    </svg>
+)
+
