@@ -1,4 +1,5 @@
 import { FleurDeLis, FacebookIcon, MapPinIcon, HeartIcon } from './Icons'
+import { ramasDeProgresion } from '../data/ramas'
 
 const PhoneIcon = ({ className = 'w-4 h-4' }) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
@@ -69,18 +70,11 @@ export default function Footer() {
                     <div>
                         <p className="font-serif font-bold text-caqui mb-4 text-sm uppercase tracking-wide">Ramas 2026</p>
                         <ul className="space-y-2">
-                            {[
-                                { name: 'Familia', ages: '6–8 años', emoji: '🐣' },
-                                { name: 'Manada', ages: '8–10 años', emoji: '🐺' },
-                                { name: 'Aldea', ages: '10–12 años', emoji: '🏡' },
-                                { name: 'Tropa', ages: '12–15 años', emoji: '⛺' },
-                                { name: 'Pioneros', ages: '15–18 años', emoji: '🏔️' },
-                                { name: 'Clan', ages: '18–20 años', emoji: '🦅' },
-                            ].map((r) => (
-                                <li key={r.name} className="flex items-center gap-2 text-sm">
+                            {ramasDeProgresion.map((r) => (
+                                <li key={r.nombre} className="flex items-center gap-2 text-sm">
                                     <span className="text-base">{r.emoji}</span>
-                                    <span className="font-medium text-white/80">{r.name}</span>
-                                    <span className="text-white/40 text-xs">{r.ages}</span>
+                                    <span className="font-medium text-white/80">{r.nombre}</span>
+                                    <span className="text-white/40 text-xs">{r.edades}</span>
                                 </li>
                             ))}
                         </ul>

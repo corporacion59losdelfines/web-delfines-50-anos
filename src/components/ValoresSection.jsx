@@ -1,4 +1,5 @@
 import { FleurDeLis, CompassIcon, HeartIcon, UsersIcon, LeafIcon, AwardIcon, StarIcon } from './Icons'
+import { PROMESA_SCOUT } from '../data/ramas'
 
 export default function ValoresSection() {
     const valores = [
@@ -53,8 +54,7 @@ export default function ValoresSection() {
                         <FleurDeLis className="w-10 h-12 text-caqui mx-auto mb-3" />
                         <p className="text-caqui font-serif italic text-sm mb-3">La Promesa Scout</p>
                         <blockquote className="font-serif text-xl md:text-2xl text-white font-medium leading-relaxed max-w-2xl mx-auto">
-                            "Por mi honor prometo hacer todo lo posible por cumplir mis deberes para con Dios y mi Patria,
-                            ayudar al prójimo en todo momento y cumplir la Ley Scout."
+                            "{PROMESA_SCOUT}"
                         </blockquote>
                     </div>
                 </div>

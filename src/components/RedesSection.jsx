@@ -1,10 +1,10 @@
-import { FleurDeLis, FacebookIcon } from './Icons'
+import { FleurDeLis, FacebookIcon, InstagramIcon } from './Icons'
 
 export default function RedesSection() {
     return (
         <section id="redes" className="py-20 md:py-28 bg-white relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-caqui/5 via-white to-cafe/5 pointer-events-none" />
-            <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 <div className="text-center mb-12 animate-on-scroll">
                     <p className="text-caqui-dark font-serif italic text-lg mb-2">Sé parte de la aventura</p>
@@ -15,64 +15,107 @@ export default function RedesSection() {
                         <div className="h-px w-16 bg-caqui" />
                     </div>
                     <p className="mt-5 text-cafe/65 max-w-xl mx-auto">
-                        Síguenos en redes sociales y sé el primero en conocer nuestras actividades,
-                        campamentos y celebraciones de nuestro 50 aniversario.
+                        Síguenos en redes sociales para ver en vivo nuestras actividades,
+                        historias, campamentos y celebraciones de nuestro 50 aniversario.
                     </p>
                 </div>
 
-                {/* Tarjeta Facebook */}
-                <div className="animate-on-scroll max-w-lg mx-auto">
-                    <a href="https://www.facebook.com/Scout59LosDelfines" target="_blank" rel="noopener noreferrer" className="group block">
-                        <div className="relative bg-white rounded-3xl shadow-xl border border-caqui/20 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                            <div className="bg-[#1877F2] p-8 relative overflow-hidden">
-                                <div className="absolute inset-0 opacity-10">
-                                    {[...Array(4)].map((_, i) => (
-                                        <div key={i} className="absolute rounded-full border-2 border-white"
-                                            style={{ width: `${80 + i * 40}px`, height: `${80 + i * 40}px`, top: `${50 - i * 20}%`, right: `${-10 + i * 5}%` }} />
-                                    ))}
-                                </div>
-                                <div className="relative z-10 flex items-center gap-4">
-                                    <div className="bg-white rounded-2xl p-3 shadow-lg">
-                                        <FacebookIcon className="w-9 h-9 text-[#1877F2]" />
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {/* Tarjeta Facebook */}
+                    <div className="animate-on-scroll">
+                        <a href="https://www.facebook.com/Scout59LosDelfines" target="_blank" rel="noopener noreferrer" className="group block h-full">
+                            <div className="relative bg-white rounded-3xl shadow-xl border border-caqui/20 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full flex flex-col">
+                                <div className="bg-[#1877F2] p-8 relative overflow-hidden">
+                                    <div className="absolute inset-0 opacity-10">
+                                        {[...Array(4)].map((_, i) => (
+                                            <div key={i} className="absolute rounded-full border-2 border-white"
+                                                style={{ width: `${80 + i * 40}px`, height: `${80 + i * 40}px`, top: `${50 - i * 20}%`, right: `${-10 + i * 5}%` }} />
+                                        ))}
                                     </div>
-                                    <div>
-                                        <p className="text-white/80 text-sm">Síguenos en</p>
-                                        <p className="text-white font-bold text-2xl">Facebook</p>
+                                    <div className="relative z-10 flex items-center gap-4">
+                                        <div className="bg-white rounded-2xl p-3 shadow-lg">
+                                            <FacebookIcon className="w-9 h-9 text-[#1877F2]" />
+                                        </div>
+                                        <div>
+                                            <p className="text-white/80 text-sm">Síguenos en</p>
+                                            <p className="text-white font-bold text-2xl">Facebook</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="p-6 md:p-8">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-12 h-12 bg-cafe rounded-full flex items-center justify-center">
-                                        <FleurDeLis className="w-6 h-7 text-white" />
+                                <div className="p-6 md:p-8 flex-1 flex flex-col">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <div className="w-12 h-12 bg-cafe rounded-full flex items-center justify-center flex-shrink-0">
+                                            <FleurDeLis className="w-6 h-7 text-white" />
+                                        </div>
+                                        <div className="overflow-hidden">
+                                            <p className="font-bold text-cafe truncate">Grupo Scout 59 Los Delfines</p>
+                                            <p className="text-sm text-cafe/50 truncate">@Scout59LosDelfines</p>
+                                        </div>
+                                        <div className="ml-auto bg-[#1877F2] text-white text-xs font-bold px-3 py-1.5 rounded-full flex-shrink-0">Me gusta</div>
                                     </div>
-                                    <div>
-                                        <p className="font-bold text-cafe">Grupo Scout 59 Los Delfines</p>
-                                        <p className="text-sm text-cafe/50">@Scout59LosDelfines</p>
-                                    </div>
-                                    <div className="ml-auto bg-[#1877F2] text-white text-xs font-bold px-3 py-1.5 rounded-full">Seguir</div>
-                                </div>
-                                <p className="text-cafe/70 text-sm leading-relaxed mb-5">
-                                    🏕 Campamentos · Servicios · Aventuras · Noticias del Grupo Scout 59 Los Delfines desde el barrio Santa Cruz. ¡50 años y contando!
-                                </p>
-                                <div className="flex flex-wrap gap-2 mb-5">
-                                    {['#Scout59', '#LosDelfines', '#Medellín', '#BodasDeOro', '#GrupoScout'].map((tag) => (
-                                        <span key={tag} className="text-[#1877F2] text-xs font-medium">{tag}</span>
-                                    ))}
-                                </div>
-                                <div className="flex items-center justify-between pt-4 border-t border-caqui/20">
-                                    <p className="text-xs text-cafe/40">facebook.com/Scout59LosDelfines</p>
-                                    <div className="flex items-center gap-1 text-cafe/60 text-sm group-hover:text-cafe transition-colors font-medium">
-                                        Visitar
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4 group-hover:translate-x-1 transition-transform">
-                                            <path d="M5 12h14M12 5l7 7-7 7" />
-                                        </svg>
+                                    <p className="text-cafe/70 text-sm leading-relaxed mb-5 flex-1">
+                                        🏕 Campamentos · Servicios · Aventuras · Noticias oficiales e información del Grupo Scout. ¡50 años formando carácter!
+                                    </p>
+                                    <div className="flex items-center justify-between pt-4 border-t border-caqui/20 mt-auto">
+                                        <p className="text-xs text-cafe/40 truncate pr-2">facebook.com/Scout59LosDelfines</p>
+                                        <div className="flex items-center gap-1 text-[#1877F2] text-sm group-hover:translate-x-1 transition-transform font-bold whitespace-nowrap">
+                                            Ver Perfil <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
+
+                    {/* Tarjeta Instagram */}
+                    <div className="animate-on-scroll delay-100">
+                        <a href="https://www.instagram.com/gruposcout59losdelfines?igsh=dXFpamhuMXhoMTFm" target="_blank" rel="noopener noreferrer" className="group block h-full">
+                            <div className="relative bg-white rounded-3xl shadow-xl border border-caqui/20 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full flex flex-col">
+                                <div className="p-8 relative overflow-hidden" style={{ background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)' }}>
+                                    <div className="absolute inset-0 opacity-10">
+                                        {[...Array(4)].map((_, i) => (
+                                            <div key={i} className="absolute rounded-full border-2 border-white"
+                                                style={{ width: `${80 + i * 40}px`, height: `${80 + i * 40}px`, top: `${50 - i * 20}%`, right: `${-10 + i * 5}%` }} />
+                                        ))}
+                                    </div>
+                                    <div className="relative z-10 flex items-center gap-4">
+                                        <div className="bg-white rounded-2xl p-3 shadow-lg">
+                                            <InstagramIcon className="w-9 h-9 text-[#dc2743]" />
+                                        </div>
+                                        <div>
+                                            <p className="text-white/80 text-sm">Síguenos en</p>
+                                            <p className="text-white font-bold text-2xl">Instagram</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="p-6 md:p-8 flex-1 flex flex-col">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <div className="w-12 h-12 bg-cafe rounded-full flex items-center justify-center border-2 border-[#bc1888] p-0.5 flex-shrink-0">
+                                            <div className="w-full h-full bg-cafe rounded-full flex items-center justify-center">
+                                                <FleurDeLis className="w-5 h-6 text-white" />
+                                            </div>
+                                        </div>
+                                        <div className="overflow-hidden">
+                                            <p className="font-bold text-cafe truncate">Scout 59 Los Delfines</p>
+                                            <p className="text-sm text-cafe/50 truncate">@gruposcout59losdelfines</p>
+                                        </div>
+                                        <div className="ml-auto bg-[#0095f6] text-white text-xs font-bold px-4 py-1.5 rounded-lg flex-shrink-0">Seguir</div>
+                                    </div>
+                                    <p className="text-cafe/70 text-sm leading-relaxed mb-5 flex-1">
+                                        📸 ¡Sigue nuestras historias en vivo! Mira fotos exclusivas de nuestros campamentos, reuniones y el día a día de nuestras unidades.
+                                    </p>
+                                    <div className="flex items-center justify-between pt-4 border-t border-caqui/20 mt-auto">
+                                        <p className="text-xs text-cafe/40 truncate pr-2">instagram.com/gruposcout59losdelfines</p>
+                                        <div className="flex items-center gap-1 text-[#bc1888] text-sm group-hover:translate-x-1 transition-transform font-bold whitespace-nowrap">
+                                            Ver Perfil <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
 
                 <div className="text-center mt-10 animate-on-scroll">
