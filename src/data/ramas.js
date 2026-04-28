@@ -1,11 +1,37 @@
 /**
  * @file ramas.js
  * @description Fuente de verdad única para todas las unidades del Grupo Scout 59 Los Delfines.
- * Cada objeto contiene: slug, nombre, edades, tipo, lema, logo_url, descripcion,
- * mistica_html, oracion, principios, skills y maximo_adelanto.
  *
- * Para agregar una nueva unidad basta con añadir un objeto a este array;
- * el sistema de rutas dinámicas lo detectará automáticamente.
+ * ESQUEMA POR OBJETO (campos opcionales marcados con ?)
+ * ──────────────────────────────────────────────────────
+ *  slug              {string}     – identificador de ruta
+ *  nombre            {string}     – nombre de la unidad
+ *  unidad_nombre     {string}     – nombre oficial de la Unidad
+ *  rama_nombre       {string}     – nombre oficial de la Rama
+ *  edades            {string}     – rango de edad
+ *  tipo              {string}     – 'progresion' | 'apoyo'
+ *  emoji             {string}
+ *  lema              {string}
+ *  color             {object}     – tokens de color
+ *  logo_url          {string}
+ *  descripcion       {string}
+ *  mistica_html      {string}     – HTML enriquecido de la mística
+ *  oracion           {string}
+ *  principios        {string[]}
+ *  skills            {string[]}
+ *  maximo_adelanto   {string|null}
+ *
+ *  — Campos pedagógicos (ramas de progresión) —
+ *  promesa           {string|null}
+ *  ley               {string|null}
+ *  filosofia         {string|null}  – filosofía educativa general de la etapa
+ *  filosofia_pedagogica {string|null} – enfoque metodológico detallado
+ *  el_rol_familiar   {string|null}  – texto orientado a padres
+ *  importancia_edad  {string|null}
+ *  aprendizajes      {string[]}     – competencias esperadas
+ *  progresion        {string|null}  – resumen del sistema de insignias
+ *  progresion_y_sendas {string|null} – descripción detallada de hitos de desarrollo
+ *  recursos_oficiales {Array<{titulo, url_pdf, url_caratula}>} – documentos descargables
  */
 
 /** Promesa Scout oficial del Grupo 59 Los Delfines */
@@ -18,9 +44,14 @@ export const PROMESA_SCOUT =
  *  RAMAS DE PROGRESIÓN  (ordenadas por edad)
  *  ───────────────────────────────────────────────────────── */
 const ramasProgresion = [
+    /* ══════════════════════════════════════════════════════
+     *  FAMILIA / CACHORROS  ·  5 – 6 años
+     * ══════════════════════════════════════════════════════ */
     {
         slug: 'familia',
         nombre: 'Familia',
+        unidad_nombre: 'Familia',
+        rama_nombre: 'Cachorros',
         edades: '5 – 6 años',
         tipo: 'progresion',
         emoji: '🐣',
@@ -35,20 +66,70 @@ const ramasProgresion = [
         },
         logo_url: '/images/Logos/familia.png.png',
         descripcion:
-            'El descubrimiento del mundo a través del juego y la integración familiar.',
+            'El primer encuentro del niño con el mundo scout: un espacio seguro donde el juego, la naturaleza y la familia construyen la base del carácter.',
         mistica_html: `
-            <p>El descubrimiento del mundo a través del juego y la integración familiar.</p>
-            <p>Es el primer paso en la naturaleza, donde la socialización temprana y la imaginación construyen las bases del carácter scout.</p>
+            <p>En la Unidad Familia, el bosque se convierte en un aula sin paredes. A través del pensamiento mágico propio de la infancia temprana, los Cachorros comienzan a descubrir que el mundo es amplio, interesante y lleno de personas con quienes compartir.</p>
+            <p>Este espacio no exige habilidades técnicas, sino algo más profundo: aprender a estar con otros, a esperar, a cuidar y a sonreír. La familia es el primer equipo.</p>
         `,
         oracion:
             'Dios mío, hazme bueno, fuerte y sano. Que aprenda a compartir, a cuidar y a querer a quienes me rodean. Amén.',
         principios: ['Amor familiar', 'Juego y creatividad', 'Primeros valores', 'Descubrimiento del entorno'],
         skills: ['Juego en equipo', 'Primeros valores', 'Amor por la naturaleza'],
         maximo_adelanto: 'Lobato Semilla',
+
+        /* ── Identidad de la rama ── */
+        promesa: 'Prometo amar a Dios y a mi familia, y compartir con los demás.',
+        ley: 'El Cachorro es alegre, dice la verdad y comparte con su familia.',
+
+        /* ── Filosofía educativa ── */
+        filosofia:
+            'El descubrimiento del mundo a través de la fantasía y el juego, cimentando la empatía y la seguridad emocional bajo el núcleo familiar.',
+        filosofia_pedagogica:
+            'A través del pensamiento mágico y el juego simbólico, canalizamos la energía del niño hacia la convivencia. Utilizamos "El Bosque" y la naturaleza como un entorno seguro para el descubrimiento.',
+
+        /* ── Orientación a padres ── */
+        el_rol_familiar:
+            'En esta unidad, el adulto no es un espectador. Funciona como la "base segura" desde la cual el niño explora. El padre o madre se convierte en un participante activo, haciendo del escultismo una herramienta de crianza compartida.',
+
+        /* ── Desarrollo evolutivo ── */
+        importancia_edad:
+            'A los 5-6 años, los niños requieren acompañamiento directo para hacer la transición entre el hogar y el mundo exterior, desarrollando su autonomía y motricidad básica.',
+        aprendizajes: [
+            'Autonomía básica',
+            'Integración social temprana',
+            'Respeto por la naturaleza',
+            'El valor de Compartir',
+        ],
+
+        /* ── Progresión ── */
+        progresion:
+            'Etapas de descubrimiento personal e integración (Huellas), logrando insignias de adaptación, higiene y participación familiar.',
+        progresion_y_sendas:
+            'La progresión no busca habilidades complejas, sino hitos del desarrollo: psicomotricidad, hábitos de higiene, la capacidad de esperar turnos y la asimilación profunda del valor de compartir.',
+
+        /* ── Recursos oficiales (múltiples) ── */
+        recursos_oficiales: [
+            {
+                titulo: 'Manual de Cachorros Vol. 1',
+                url_pdf: '/docs/manual-familia-vol1.pdf',
+                url_caratula: '/images/portadas/portada-familia-vol1.jpg',
+            },
+            {
+                titulo: 'Guía Metodológica Vol. 2',
+                url_pdf: '/docs/manual-familia-vol2.pdf',
+                url_caratula: '/images/portadas/portada-familia-vol2.jpg',
+            },
+        ],
     },
+
+    /* ══════════════════════════════════════════════════════
+     *  MANADA / LOBATOS  ·  7 – 9 años
+     * ══════════════════════════════════════════════════════ */
     {
         slug: 'manada',
         nombre: 'Manada',
+        unidad_nombre: 'Manada',
+        rama_nombre: 'Lobatos',
         edades: '7 – 9 años',
         tipo: 'progresion',
         emoji: '🐺',
@@ -72,10 +153,50 @@ const ramasProgresion = [
         principios: ['Obediencia', 'Lealtad a la manada', 'Trabajo en equipo', 'Amor por la naturaleza'],
         skills: ['Trabajo en equipo', 'Primeros auxilios básicos', 'Orientación'],
         maximo_adelanto: 'Gran Lobato',
+
+        /* ── Identidad de la rama ── */
+        promesa: 'Prometo hacer siempre lo mejor, para cumplir mis deberes para con Dios y la Patria, observar la Ley de la Manada y hacer una buena acción a alguien todos los días.',
+        ley: 'El Lobato escucha y obedece al Viejo Lobo. El Lobato no se escucha a sí mismo.',
+
+        /* ── Filosofía educativa ── */
+        filosofia: 'Basada en El Libro de las Tierras Vírgenes, la Manada es el Pueblo Libre donde cada niño aprende a valerse por sí mismo respetando las leyes de la naturaleza.',
+        filosofia_pedagogica: 'Inspirada en "El Libro de las Tierras Vírgenes", los niños integran el "Pueblo Libre". La selva es el escenario donde aprenden a valerse por sí mismos, respetando las leyes de la naturaleza y el trabajo en equipo.',
+
+        /* ── Orientación al adulto ── */
+        el_rol_familiar: null,
+        el_rol_del_adulto: 'Los dirigentes son los "Viejos Lobos" (Akela, Baloo, Bagheera). Actúan como figuras de sabiduría y justicia, guiando a los niños no mediante la autoridad impuesta, sino a través del ejemplo y la confianza.',
+
+        /* ── Desarrollo evolutivo ── */
+        importancia_edad: 'Entre los 7 y 9 años, el niño busca pertenecer a un grupo de pares. La Manada canaliza esta necesidad, enseñándole a pensar en el "nosotros" antes que en el "yo" y otorgándole responsabilidades a su medida.',
+        aprendizajes: ['Trabajo en equipo', 'Obediencia reflexiva', 'Servicio diario', 'Habilidades manuales'],
+
+        /* ── Progresión ── */
+        progresion: 'De Pata Tierna al Gran Lobato, cada insignia representa una presa cazada: hitos de cuidado personal, habilidades y servicio.',
+        progresion_y_sendas: 'El camino desde "Pata Tierna" hasta el reconocimiento máximo. Las insignias representan presas cazadas: hitos en el cuidado personal, habilidades manuales, conocimiento cívico y servicio diario.',
+
+        /* ── Recursos oficiales ── */
+        recursos_oficiales: [
+            {
+                titulo: 'Manual de Dirigentes de Manada',
+                url_pdf: '/docs/manual-manada-dirigentes.pdf',
+                url_caratula: '/images/portadas/portada-manada-dirigentes.jpg',
+            },
+            {
+                titulo: 'Especialidades para Lobatos',
+                url_pdf: '/docs/manual-manada-especialidades.pdf',
+                url_caratula: '/images/portadas/portada-manada-especialidades.jpg',
+            },
+        ],
     },
+
+    /* ══════════════════════════════════════════════════════
+     *  ALDEA / WEBELOS  ·  10 – 11 años
+     * ══════════════════════════════════════════════════════ */
     {
         slug: 'aldea',
         nombre: 'Aldea',
+        unidad_nombre: 'Aldea',
+        rama_nombre: 'Webelos',
         edades: '10 – 11 años',
         tipo: 'progresion',
         emoji: '🏡',
@@ -100,10 +221,19 @@ const ramasProgresion = [
         principios: ['Construcción personal', 'Servicio a la comunidad', 'Amistad duradera', 'Habilidades prácticas'],
         skills: ['Campismo', 'Servicio comunitario', 'Liderazgo inicial'],
         maximo_adelanto: 'Scout Forestal',
+        promesa: null, ley: null, filosofia: null, filosofia_pedagogica: null,
+        el_rol_familiar: null, importancia_edad: null, aprendizajes: [],
+        progresion: null, progresion_y_sendas: null, recursos_oficiales: [],
     },
+
+    /* ══════════════════════════════════════════════════════
+     *  TROPA / SCOUTS  ·  12 – 14 años
+     * ══════════════════════════════════════════════════════ */
     {
         slug: 'tropa',
         nombre: 'Tropa',
+        unidad_nombre: 'Tropa',
+        rama_nombre: 'Scouts',
         edades: '12 – 14 años',
         tipo: 'progresion',
         emoji: '⛺',
@@ -127,10 +257,19 @@ const ramasProgresion = [
         principios: ['Honor y honestidad', 'Servicio sin fronteras', 'Aventura y superación', 'Ciudadanía activa'],
         skills: ['Expediciones', 'Proyectos de servicio', 'Primeros auxilios avanzados'],
         maximo_adelanto: 'Scout de Honor',
+        promesa: null, ley: null, filosofia: null, filosofia_pedagogica: null,
+        el_rol_familiar: null, importancia_edad: null, aprendizajes: [],
+        progresion: null, progresion_y_sendas: null, recursos_oficiales: [],
     },
+
+    /* ══════════════════════════════════════════════════════
+     *  SOCIEDAD / NÓMADAS  ·  15 – 17 años
+     * ══════════════════════════════════════════════════════ */
     {
         slug: 'sociedad',
         nombre: 'Sociedad',
+        unidad_nombre: 'Sociedad',
+        rama_nombre: 'Nómadas de Scout',
         edades: '15 – 17 años',
         tipo: 'progresion',
         emoji: '🏔️',
@@ -156,10 +295,19 @@ const ramasProgresion = [
         principios: ['Liderazgo transformador', 'Responsabilidad social', 'Proyección comunitaria', 'Autonomía y criterio'],
         skills: ['Liderazgo avanzado', 'Proyectos sociales', 'Habilidades técnicas'],
         maximo_adelanto: 'Pionero de Plata',
+        promesa: null, ley: null, filosofia: null, filosofia_pedagogica: null,
+        el_rol_familiar: null, importancia_edad: null, aprendizajes: [],
+        progresion: null, progresion_y_sendas: null, recursos_oficiales: [],
     },
+
+    /* ══════════════════════════════════════════════════════
+     *  CLAN / ROVERS  ·  18 – 21 años
+     * ══════════════════════════════════════════════════════ */
     {
         slug: 'clan',
         nombre: 'Clan',
+        unidad_nombre: 'Clan',
+        rama_nombre: 'Rovers',
         edades: '18 – 21 años',
         tipo: 'progresion',
         emoji: '🦅',
@@ -184,6 +332,9 @@ const ramasProgresion = [
         principios: ['Servicio global', 'Sabiduría y madurez', 'Ciudadanía mundial', 'Testimonio de vida'],
         skills: ['Servicio avanzado', 'Formación de líderes', 'Ciudadanía global'],
         maximo_adelanto: 'Rover de Plata',
+        promesa: null, ley: null, filosofia: null, filosofia_pedagogica: null,
+        el_rol_familiar: null, importancia_edad: null, aprendizajes: [],
+        progresion: null, progresion_y_sendas: null, recursos_oficiales: [],
     },
 ]
 
@@ -217,6 +368,9 @@ const unidadesApoyo = [
         principios: ['Formación integral', 'Liderazgo de servicio', 'Excelencia educativa', 'Unidad y coherencia'],
         skills: ['Dirección educativa', 'Formación de líderes', 'Gestión del grupo'],
         maximo_adelanto: null,
+        promesa: null, ley: null, filosofia: null, filosofia_pedagogica: null,
+        el_rol_familiar: null, importancia_edad: null, aprendizajes: [],
+        progresion: null, progresion_y_sendas: null, recursos_oficiales: [],
     },
     {
         slug: 'consejo-padres',
@@ -244,6 +398,9 @@ const unidadesApoyo = [
         principios: ['Apoyo familiar', 'Colaboración activa', 'Compromiso comunitario', 'Puente hogar-grupo'],
         skills: ['Apoyo logístico', 'Gestión de recursos', 'Articulación familiar'],
         maximo_adelanto: null,
+        promesa: null, ley: null, filosofia: null, filosofia_pedagogica: null,
+        el_rol_familiar: null, importancia_edad: null, aprendizajes: [],
+        progresion: null, progresion_y_sendas: null, recursos_oficiales: [],
     },
 ]
 

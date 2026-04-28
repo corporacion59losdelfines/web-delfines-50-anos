@@ -69,12 +69,19 @@ export default function Footer() {
                     {/* Ramas */}
                     <div>
                         <p className="font-serif font-bold text-caqui mb-4 text-sm uppercase tracking-wide">Ramas 2026</p>
-                        <ul className="space-y-2">
+                        <ul className="space-y-3">
                             {ramasDeProgresion.map((r) => (
-                                <li key={r.nombre} className="flex items-center gap-2 text-sm">
-                                    <span className="text-base">{r.emoji}</span>
-                                    <span className="font-medium text-white/80">{r.nombre}</span>
-                                    <span className="text-white/40 text-xs">{r.edades}</span>
+                                <li key={r.slug} className="flex flex-col">
+                                    <div className="flex items-center gap-2 text-sm">
+                                        <span className="text-base">{r.emoji}</span>
+                                        <span className="font-medium text-white/90">Unidad {r.unidad_nombre}</span>
+                                    </div>
+                                    <div className="flex items-center gap-2 pl-7 mt-1">
+                                        <span className="inline-block bg-white/10 text-white/80 text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-widest border border-white/5">
+                                            Rama: {r.rama_nombre}
+                                        </span>
+                                        <span className="text-white/40 text-[10px]">{r.edades}</span>
+                                    </div>
                                 </li>
                             ))}
                         </ul>

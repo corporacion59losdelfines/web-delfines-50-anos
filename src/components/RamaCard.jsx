@@ -45,13 +45,26 @@ export default function RamaCard({ rama }) {
                         <div className="w-14 h-14 flex items-center justify-center">
                             <CardLogo src={rama.logo_url} alt={`Logo ${rama.nombre}`} />
                         </div>
-                        <div>
-                            <p className="text-white/60 text-xs font-semibold uppercase tracking-widest mb-0.5">
-                                {isApoyo ? 'Apoyo' : 'Rama'}
-                            </p>
-                            <h3 className="font-serif font-bold text-xl text-white leading-tight">
-                                {rama.nombre}
-                            </h3>
+                        <div className="flex flex-col items-start justify-center py-1">
+                            {isApoyo ? (
+                                <>
+                                    <p className="text-white/60 text-[10px] font-bold uppercase tracking-widest mb-0.5">
+                                        Unidad de Apoyo
+                                    </p>
+                                    <h3 className="font-serif font-bold text-xl text-white leading-tight">
+                                        {rama.nombre}
+                                    </h3>
+                                </>
+                            ) : (
+                                <>
+                                    <h3 className="font-serif font-bold text-xl text-white leading-tight mb-1">
+                                        Unidad {rama.unidad_nombre}
+                                    </h3>
+                                    <span className="inline-block bg-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider backdrop-blur-sm border border-white/10 shadow-sm">
+                                        Rama: {rama.rama_nombre}
+                                    </span>
+                                </>
+                            )}
                         </div>
                     </div>
                     {/* Badge de edades */}

@@ -40,6 +40,214 @@ const CheckBadge = () => (
     </svg>
 )
 
+/* ── Tarjetas de Identidad: Promesa y Ley ───────────────── */
+function IdentityCards({ rama }) {
+    const { promesa, ley, color, emoji } = rama
+    if (!promesa && !ley) return null
+    const cards = [
+        { icon: '🤝', label: 'La Promesa', text: promesa },
+        { icon: '📜', label: 'La Ley', text: ley },
+    ].filter(c => c.text)
+    return (
+        <section className="py-14 md:py-20 bg-white">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="animate-on-scroll text-center mb-10">
+                    <p className="text-caqui-dark font-serif italic text-sm mb-1">Identidad de la Rama</p>
+                    <h2 className="section-title mb-4">Promesa y Ley</h2>
+                    <div className="flex items-center justify-center gap-4">
+                        <div className="h-px w-12 bg-caqui/50" />
+                        <FleurDeLis className="w-5 h-6 text-caqui" />
+                        <div className="h-px w-12 bg-caqui/50" />
+                    </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {cards.map((c, i) => (
+                        <div key={i}
+                            className="animate-on-scroll rounded-3xl p-8 border-2 relative overflow-hidden"
+                            style={{ borderColor: `${color.accentHex}30`, background: `linear-gradient(135deg, ${color.heroFrom}, ${color.heroTo})` }}>
+                            {/* Marca de agua: emoji de la rama */}
+                            <span
+                                aria-hidden="true"
+                                className="absolute -bottom-4 -right-4 text-9xl leading-none select-none pointer-events-none"
+                                style={{ opacity: 0.07 }}
+                            >{emoji}</span>
+                            <span className="absolute top-4 right-5 text-4xl opacity-15 select-none">{c.icon}</span>
+                            <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: color.accentHex }}>{c.label}</p>
+                            <p className="font-serif italic text-xl md:text-2xl text-cafe font-semibold leading-relaxed relative z-10">"{c.text}"</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    )
+}
+
+/* ── Filosofía Pedagógica y Rol del Adulto/Familia ─────── */
+function FilosofiaRolSection({ rama }) {
+    const {
+        filosofia_pedagogica, el_rol_familiar, el_rol_del_adulto,
+        importancia_edad, progresion_y_sendas, color, emoji
+    } = rama
+    const rolTexto = el_rol_familiar || el_rol_del_adulto
+    const rolLabel = el_rol_familiar ? 'Para los padres de familia' : 'El rol del dirigente'
+    const rolTitulo = el_rol_familiar ? 'El Papel de la Familia' : 'Los Viejos Lobos'
+    const rolIcono = el_rol_familiar ? '👨‍👩‍👧' : '⚜️'
+    const rolSubtexto = el_rol_familiar
+        ? 'Escultismo como herramienta de crianza compartida'
+        : 'Liderazgo por ejemplo y confianza'
+    if (!filosofia_pedagogica && !rolTexto) return null
+    return (
+        <section className="py-14 md:py-20 bg-stone-50">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="animate-on-scroll text-center mb-12">
+                    <p className="text-caqui-dark font-serif italic text-sm mb-1">Marco Educativo</p>
+                    <h2 className="section-title mb-4">Filosofía y Desarrollo</h2>
+                    <div className="flex items-center justify-center gap-4">
+                        <div className="h-px w-12 bg-caqui/50" />
+                        <FleurDeLis className="w-5 h-6 text-caqui" />
+                        <div className="h-px w-12 bg-caqui/50" />
+                    </div>
+                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {/* Columna izquierda: Filosofía + Rol */}
+                    <div className="space-y-6">
+                        {filosofia_pedagogica && (
+                            <div className="animate-on-scroll bg-white rounded-2xl p-7 shadow-sm border border-caqui/15">
+                                <div className="flex items-center gap-3 mb-4">
+                                    <span className="text-2xl">🌿</span>
+                                    <h3 className="font-serif font-bold text-cafe text-lg">Filosofía Pedagógica</h3>
+                                </div>
+                                <p className="text-cafe/75 leading-relaxed">{filosofia_pedagogica}</p>
+                            </div>
+                        )}
+                        {rolTexto && (
+                            <div className="animate-on-scroll relative rounded-2xl p-7 overflow-hidden"
+                                style={{ background: `linear-gradient(135deg, ${color.heroFrom}, ${color.heroTo})`, borderLeft: `4px solid ${color.accentHex}` }}>
+                                <span aria-hidden="true"
+                                    className="absolute -bottom-3 -right-3 text-8xl leading-none select-none pointer-events-none"
+                                    style={{ opacity: 0.08 }}>{emoji}</span>
+                                <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: color.accentHex }}>{rolLabel}</p>
+                                <h3 className="font-serif font-bold text-cafe text-lg mb-4">{rolTitulo}</h3>
+                                <p className="font-serif text-cafe italic leading-relaxed relative z-10">"{rolTexto}"</p>
+                                <div className="mt-5 flex items-center gap-2">
+                                    <span className="text-lg">{rolIcono}</span>
+                                    <p className="text-cafe/60 text-sm font-semibold">{rolSubtexto}</p>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                    {/* Columna derecha: ¿Por qué esta edad? + Progresión */}
+                    <div className="space-y-6">
+                        {importancia_edad && (
+                            <div className="animate-on-scroll bg-white rounded-2xl p-7 shadow-sm border border-caqui/15">
+                                <div className="flex items-center gap-3 mb-4">
+                                    <span className="text-2xl">🧠</span>
+                                    <h3 className="font-serif font-bold text-cafe text-lg">¿Por qué esta edad?</h3>
+                                </div>
+                                <p className="text-cafe/75 leading-relaxed">{importancia_edad}</p>
+                            </div>
+                        )}
+                        {progresion_y_sendas && (
+                            <div className="animate-on-scroll bg-white rounded-2xl p-7 shadow-sm border border-caqui/15">
+                                <div className="flex items-center gap-3 mb-4">
+                                    <span className="text-2xl">🎯</span>
+                                    <h3 className="font-serif font-bold text-cafe text-lg">Sistema de Progresión</h3>
+                                </div>
+                                <p className="text-cafe/75 leading-relaxed">{progresion_y_sendas}</p>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+/* ── Hitos de Desarrollo ────────────────────────────────── */
+const HITO_ICONS = ['🏃','🪥','🤲','💛','🌱','🎯']
+function HitosDesarrollo({ rama }) {
+    const { aprendizajes, progresion_y_sendas, color } = rama
+    if (!aprendizajes?.length && !progresion_y_sendas) return null
+    const hitos = aprendizajes?.length > 0 ? aprendizajes
+        : ['Psicomotricidad','Hábitos de higiene','Convivencia','El valor de compartir']
+    return (
+        <section className="py-14 md:py-20 bg-white">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="animate-on-scroll text-center mb-12">
+                    <p className="text-caqui-dark font-serif italic text-sm mb-1">Camino de crecimiento</p>
+                    <h2 className="section-title mb-4">Hitos de Desarrollo</h2>
+                    <div className="flex items-center justify-center gap-4">
+                        <div className="h-px w-12 bg-caqui/50" />
+                        <FleurDeLis className="w-5 h-6 text-caqui" />
+                        <div className="h-px w-12 bg-caqui/50" />
+                    </div>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+                    {hitos.map((h, i) => (
+                        <div key={i}
+                            className="animate-on-scroll text-center rounded-2xl p-5 border-2 hover:shadow-md transition-all duration-300"
+                            style={{ borderColor: `${color.accentHex}25`, background: `linear-gradient(135deg, ${color.heroFrom}, ${color.heroTo})`, transitionDelay: `${i * 60}ms` }}>
+                            <span className="text-3xl block mb-3">{HITO_ICONS[i] ?? '⭐'}</span>
+                            <p className="font-serif font-semibold text-cafe text-sm leading-snug">{h}</p>
+                        </div>
+                    ))}
+                </div>
+                {progresion_y_sendas && (
+                    <div className="animate-on-scroll border-l-4 rounded-r-2xl p-6 bg-stone-50" style={{ borderColor: color.accentHex }}>
+                        <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: color.accentHex }}>Sistema de Progresión</p>
+                        <p className="text-cafe/80 leading-relaxed">{progresion_y_sendas}</p>
+                    </div>
+                )}
+            </div>
+        </section>
+    )
+}
+
+/* ── Módulo de Descargas Múltiples ──────────────────────── */
+function ManualDownloadCard({ recursos, color }) {
+    if (!recursos?.length) return null
+    return (
+        <section className="py-14 md:py-20" style={{ background: 'linear-gradient(160deg, #302010 0%, #4B3621 100%)' }}>
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="animate-on-scroll text-center mb-10">
+                    <p className="text-caqui/70 font-serif italic text-sm mb-1">Material de consulta</p>
+                    <h2 className="font-serif font-black text-3xl md:text-4xl text-white mb-4">Recursos Oficiales</h2>
+                    <div className="flex items-center justify-center gap-4">
+                        <div className="h-px w-12 bg-caqui/40" />
+                        <FleurDeLis className="w-5 h-6 text-caqui" />
+                        <div className="h-px w-12 bg-caqui/40" />
+                    </div>
+                </div>
+                <div className={`grid gap-6 ${recursos.length === 1 ? 'grid-cols-1 max-w-sm mx-auto' : 'grid-cols-1 sm:grid-cols-2'}`}>
+                    {recursos.map((doc, i) => (
+                        <div key={i}
+                            className="animate-on-scroll bg-white/10 backdrop-blur-sm border border-white/15 rounded-3xl p-6 flex flex-col items-center gap-5 hover:bg-white/15 transition-all duration-300">
+                            <div className="w-32 h-44 rounded-xl overflow-hidden border-2 border-white/20 shadow-2xl bg-white/5 flex items-center justify-center relative">
+                                <img src={doc.url_caratula} alt={doc.titulo}
+                                    className="w-full h-full object-cover"
+                                    onError={e => { e.target.style.display = 'none' }} />
+                                <FleurDeLis className="w-12 h-14 text-caqui/40 absolute" />
+                            </div>
+                            <div className="text-center">
+                                <p className="text-white font-serif font-bold text-lg mb-1">{doc.titulo}</p>
+                                <p className="text-caqui/60 text-xs mb-4">Documento PDF oficial</p>
+                                <a href={doc.url_pdf} target="_blank" rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm text-white transition-all duration-300 hover:scale-105 shadow-lg"
+                                    style={{ backgroundColor: color.accentHex }}>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                                    </svg>
+                                    Descargar Manual
+                                </a>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    )
+}
+
 /* ── Sección de Máximos Adelantos (stub) ────────────────── */
 /**
  * HistoricoMaximosAdelantos
@@ -225,12 +433,16 @@ export default function RamaPage() {
 
                         {/* Texto hero */}
                         <div className="text-center md:text-left animate-on-scroll">
-                            {/* Tipo badge */}
+                            {/* Tipo badge / Rama */}
                             <span
-                                className="inline-block text-xs font-bold px-3 py-1 rounded-full mb-4 tracking-widest uppercase"
-                                style={{ backgroundColor: `${rama.color.accentHex}25`, color: rama.color.accentHex }}
+                                className="inline-block text-xs font-bold px-3 py-1 rounded-full mb-4 tracking-widest uppercase border"
+                                style={{
+                                    backgroundColor: `${rama.color.accentHex}25`,
+                                    color: rama.color.accentHex,
+                                    borderColor: `${rama.color.accentHex}40`
+                                }}
                             >
-                                {isApoyo ? 'Unidad de Apoyo' : 'Rama de Progresión'}
+                                {isApoyo ? 'Unidad de Apoyo' : `Rama: ${rama.rama_nombre}`}
                             </span>
 
                             <div className="flex items-center justify-center md:justify-start gap-4 mb-3">
@@ -240,7 +452,7 @@ export default function RamaPage() {
                             </div>
 
                             <h1 className="font-serif font-black text-5xl md:text-7xl text-white leading-none mb-3">
-                                {rama.nombre}
+                                {isApoyo ? rama.nombre : `Unidad ${rama.unidad_nombre}`}
                             </h1>
 
                             <p className="font-serif italic text-caqui text-xl md:text-2xl mb-5">
@@ -269,6 +481,15 @@ export default function RamaPage() {
                     </svg>
                 </div>
             </section>
+
+            {/* ── Tarjetas Identidad ───────────────────── */}
+            <IdentityCards rama={rama} />
+
+            {/* ── Filosofía + Rol Familiar ─────────────── */}
+            <FilosofiaRolSection rama={rama} />
+
+            {/* ── Hitos de Desarrollo ──────────────────── */}
+            <HitosDesarrollo rama={rama} />
 
             {/* ── Mística ─────────────────────────────── */}
             <section className="py-16 md:py-24 bg-white">
@@ -354,6 +575,9 @@ export default function RamaPage() {
                 </div>
             </section>
 
+            {/* ── Recursos Oficiales / Descargas ───────── */}
+            <ManualDownloadCard recursos={rama.recursos_oficiales} color={rama.color} />
+
             {/* ── Histórico de Máximos Adelantos ──────── */}
             <HistoricoMaximosAdelantos ramaSlug={slug} maximoAdelanto={rama.maximo_adelanto} />
 
@@ -371,7 +595,7 @@ export default function RamaPage() {
                 <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-on-scroll">
                     <FleurDeLis className="w-10 h-12 text-caqui mx-auto mb-6" />
                     <h2 className="font-serif font-black text-3xl md:text-4xl text-white mb-4">
-                        ¿Quieres ser parte de la {rama.nombre}?
+                        ¿Quieres ser parte de {isApoyo ? 'la ' + rama.nombre : 'la Unidad ' + rama.unidad_nombre}?
                     </h2>
                     <p className="text-white/65 mb-8 text-lg max-w-xl mx-auto leading-relaxed">
                         Contáctanos hoy mismo y da el primer paso de tu aventura en el
