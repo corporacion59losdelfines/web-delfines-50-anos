@@ -149,14 +149,24 @@ const ramasProgresion = [
             <p>Basado estrictamente en "El Libro de las Tierras Vírgenes". Los lobatos aprenden bajo la guía de los Viejos Lobos (Akela, Baloo, Bagheera).</p>
             <p>Representa el Pueblo Libre, donde se vive la Ley de la Manada: El Lobato escucha y obedece al Viejo Lobo, el Lobato no se escucha a sí mismo.</p>
         `,
+        titulo_oracion: 'Gran Clamor',
         oracion: '¡Haremos lo mejor! ¡Dib, Dib, Dib… Dob, Dob, Dob!',
-        principios: ['Obediencia', 'Lealtad a la manada', 'Trabajo en equipo', 'Amor por la naturaleza'],
+        principios: [
+            'Deber para con Dios (o la dimensión espiritual): invita a vivir con fidelidad a las propias creencias y con respeto hacia las creencias de los demás.',
+            'Deber para con los demás: se expresa en el servicio, la solidaridad y la buena acción diaria.',
+            'Deber para con uno mismo: implica cuidar la salud, el desarrollo personal y asumir responsabilidades acordes a la edad.'
+        ],
+        virtudes: [
+            'Lealtad: ser fiel a los valores, a la palabra dada y a las personas con quienes se comparte la vida.',
+            'Abnegación: servir con generosidad, sin esperar recompensas.',
+            'Pureza: procurar coherencia entre lo que se piensa, se dice y se hace, con respeto hacia uno mismo y hacia los demás.'
+        ],
         skills: ['Trabajo en equipo', 'Primeros auxilios básicos', 'Orientación'],
         maximo_adelanto: 'Gran Lobato',
 
         /* ── Identidad de la rama ── */
-        promesa: 'Prometo hacer siempre lo mejor, para cumplir mis deberes para con Dios y la Patria, observar la Ley de la Manada y hacer una buena acción a alguien todos los días.',
-        ley: 'El Lobato escucha y obedece al Viejo Lobo. El Lobato no se escucha a sí mismo.',
+        promesa: '“Yo (...), prometo hacer siempre lo mejor, para cumplir mis deberes para con Dios (o mi espiritualidad) y la Patria, hacer un favor a alguien cada día, y cumplir la Ley de la Manada.”',
+        ley: '1. Escucha y respeta a los demás.\n2. Dice siempre la verdad.\n3. Es alegre y buen amigo.\n4. Comparte con su familia.\n5. Ayuda a los demás con alegría.\n6. Ama y protege la naturaleza.\n7. Escucha y aprende con emoción.',
 
         /* ── Filosofía educativa ── */
         filosofia: 'Basada en El Libro de las Tierras Vírgenes, la Manada es el Pueblo Libre donde cada niño aprende a valerse por sí mismo respetando las leyes de la naturaleza.',

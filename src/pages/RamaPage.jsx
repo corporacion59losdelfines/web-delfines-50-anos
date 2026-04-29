@@ -73,7 +73,7 @@ function IdentityCards({ rama }) {
                             >{emoji}</span>
                             <span className="absolute top-4 right-5 text-4xl opacity-15 select-none">{c.icon}</span>
                             <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: color.accentHex }}>{c.label}</p>
-                            <p className="font-serif italic text-xl md:text-2xl text-cafe font-semibold leading-relaxed relative z-10">"{c.text}"</p>
+                            <p className="font-serif italic text-xl md:text-2xl text-cafe font-semibold leading-relaxed relative z-10 whitespace-pre-line">"{c.text}"</p>
                         </div>
                     ))}
                 </div>
@@ -525,8 +525,8 @@ export default function RamaPage() {
                 <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <div className="animate-on-scroll">
                         <FleurDeLis className="w-10 h-12 text-cafe/30 mx-auto mb-4" />
-                        <p className="text-caqui-dark font-serif italic text-base mb-6">
-                            {rama.slug === 'tropa' ? 'La Promesa Scout' : `Oración de la ${rama.nombre}`}
+                        <p className="text-caqui-dark font-serif italic font-semibold text-xl mb-6">
+                            {rama.titulo_oracion || (rama.slug === 'tropa' ? 'La Promesa Scout' : `Oración de la ${rama.nombre}`)}
                         </p>
                         <blockquote
                             className="font-serif text-xl md:text-2xl text-cafe font-medium italic leading-relaxed
@@ -541,37 +541,68 @@ export default function RamaPage() {
                 </div>
             </section>
 
-            {/* ── Principios ──────────────────────────── */}
+            {/* ── Principios y Virtudes ──────────────────────────── */}
             <section className="py-16 md:py-20 bg-white">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="animate-on-scroll text-center mb-12">
                         <p className="text-caqui-dark font-serif italic text-base mb-1">Lo que nos guía</p>
-                        <h2 className="section-title mb-4">Nuestros Principios</h2>
+                        <h2 className="section-title mb-4">Nuestros Principios{rama.virtudes ? ' y Virtudes' : ''}</h2>
                         <div className="flex items-center justify-center gap-4">
                             <div className="h-px w-12 bg-caqui/50" />
                             <FleurDeLis className="w-5 h-6 text-caqui" />
                             <div className="h-px w-12 bg-caqui/50" />
                         </div>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                        {rama.principios.map((p, i) => (
-                            <div
-                                key={i}
-                                className="animate-on-scroll flex items-start gap-4 p-6 rounded-2xl border border-caqui/20 hover:border-caqui/50 hover:shadow-md transition-all duration-300 group"
-                                style={{ transitionDelay: `${i * 80}ms` }}
-                            >
-                                <div
-                                    className="flex-shrink-0 w-9 h-9 rounded-xl flex items-center justify-center text-white shadow-sm mt-0.5"
-                                    style={{ backgroundColor: rama.color.accentHex }}
-                                >
-                                    <CheckBadge />
-                                </div>
-                                <p className="font-serif font-semibold text-cafe text-lg leading-snug group-hover:text-cafe transition-colors">
-                                    {p}
-                                </p>
+                    
+                    {rama.principios && rama.principios.length > 0 && (
+                        <div className={rama.virtudes ? 'mb-12' : ''}>
+                            {rama.virtudes && <h3 className="font-serif font-bold text-cafe text-2xl mb-6 text-center">Principios</h3>}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                {rama.principios.map((p, i) => (
+                                    <div
+                                        key={i}
+                                        className="animate-on-scroll flex items-start gap-4 p-6 rounded-2xl border border-caqui/20 hover:border-caqui/50 hover:shadow-md transition-all duration-300 group"
+                                        style={{ transitionDelay: `${i * 80}ms` }}
+                                    >
+                                        <div
+                                            className="flex-shrink-0 w-9 h-9 rounded-xl flex items-center justify-center text-white shadow-sm mt-0.5"
+                                            style={{ backgroundColor: rama.color.accentHex }}
+                                        >
+                                            <CheckBadge />
+                                        </div>
+                                        <p className="font-serif font-semibold text-cafe text-lg leading-snug group-hover:text-cafe transition-colors">
+                                            {p}
+                                        </p>
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    )}
+
+                    {rama.virtudes && rama.virtudes.length > 0 && (
+                        <div>
+                            {rama.principios && <h3 className="font-serif font-bold text-cafe text-2xl mb-6 text-center">Virtudes</h3>}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                {rama.virtudes.map((v, i) => (
+                                    <div
+                                        key={i}
+                                        className="animate-on-scroll flex items-start gap-4 p-6 rounded-2xl border border-caqui/20 hover:border-caqui/50 hover:shadow-md transition-all duration-300 group"
+                                        style={{ transitionDelay: `${i * 80}ms` }}
+                                    >
+                                        <div
+                                            className="flex-shrink-0 w-9 h-9 rounded-xl flex items-center justify-center text-white shadow-sm mt-0.5"
+                                            style={{ backgroundColor: rama.color.accentHex }}
+                                        >
+                                            <span className="text-lg">⭐</span>
+                                        </div>
+                                        <p className="font-serif font-semibold text-cafe text-lg leading-snug group-hover:text-cafe transition-colors">
+                                            {v}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
             </section>
 
